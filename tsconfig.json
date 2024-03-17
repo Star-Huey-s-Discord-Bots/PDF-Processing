@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
+      "esModuleInterop": true,
+      "outDir": "./dist",
+      "allowJs": true,
+      "target": "ES2022",
+      "lib": [ 
+          "ES2022.Object",
+          "ES2021.String"
+      ]
+  },
+  "include": [
+      "./src"
+  ]
+}
