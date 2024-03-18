@@ -2,7 +2,7 @@ import { PdfConvert } from "pdf-convert-js";
 import fs, { promises as fsp } from "node:fs";
 import Jimp from 'jimp';
 
-async function convertPDF(file) {
+async function genPDF(file) {
   const pdfConverter = new PdfConvert(`./data/PDF/${file}.pdf`);
 
   // ! this is faster way, but will use too much memory
@@ -36,7 +36,7 @@ async function genPDFs(removeOld = true) {
     }
 
   for (let file of await fsp.readdir("./data/PDF")) {
-    convertPDF(file.split(".")[0]);
+    genPDF(file.split(".")[0]);
   }
 }
 
@@ -201,9 +201,10 @@ async function splitPNG(file: string, removeOld = true) {
 }
 
 async function main() {
-  const FILE = "6-1";
-  // await genPDF(FILE);
-  await splitPNG(FILE);
+  for (let file of [ "6-1", "6-2", "6-3", "6-4" ]) {
+    // await genPDF(file);
+    await splitPNG(file, false);
+  }
 }
 
 main();
